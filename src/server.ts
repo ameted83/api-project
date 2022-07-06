@@ -1,6 +1,6 @@
 // type Name = string;
 
-const name: string = "Amelia";
+const name = "Amelia";
 
 // throw new Error("Something went wrong");
 
