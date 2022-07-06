@@ -1,7 +1,7 @@
-// type Name = string;
+type Name = string;
 
-const name = "Amelia";
+const name: Name = "Amelia";
 
-// throw new Error("Something went wrong");
+throw new Error("Something went wrong");
 
 console.log(`Hello ${name}`);
