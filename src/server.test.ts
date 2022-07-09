@@ -28,7 +28,7 @@ test("GET /planets", async () => {
         },
     ];
 
-    // @ts-ignore //
+    // @ts-ignore
     prismaMock.planet.findMany.mockResolvedValue(planets);
 
     const response = await request
@@ -37,4 +37,20 @@ test("GET /planets", async () => {
         .expect("Content-Type", /application\/json/);
 
     expect(response.body).toEqual(planets);
+});
+
+test("POST /planets", async () => {
+    const planet = {
+        name: "Mercury",
+        diameter: 1234,
+        moons: 12,
+    };
+
+    const response = await request
+        .post("/planets")
+        .send(planet)
+        .expect(201)
+        .expect("Content-Type", /application\/json/);
+
+    expect(response.body).toEqual(planet);
 });
