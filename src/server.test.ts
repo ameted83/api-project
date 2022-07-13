@@ -252,7 +252,17 @@ describe("DELETE /planet/:id", () => {
     });
 });
 
+// These tests depende on: src/lib/middleware/multer.mock.ts
+// It uses multer.memoryStorage, so no files are written to disk.
+
 describe("POST /planets/:id/photo", () => {
+    test("Valid request whith PNG file upload", async () => {
+        await request
+            .post("/planets/23/photo")
+            .attach("photo", "test-fixtures/photos/space-planet.png")
+            .expect(201)
+            .expect("Access-Control-Allow-Origin", "http://localhost:8080");
+    });
     test("Invalid planet ID", async () => {
         const response = await request
             .post("/planets/asdf/photo")
