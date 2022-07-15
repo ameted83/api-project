@@ -9,7 +9,9 @@
     "start": "node --enable-source-maps dist/server.js",
     "start:dev": "nodemon --watch dist/ --watch .env",
     "dev": "npm run build && concurrently 'npm:build:dev' 'npm:start:dev'",
-    "web": "serve -p 8080 web/"
+    "web": "serve -p 8080 web/",
+    "prepare": "husky install",
+    "scriptname": "husky install"
   },
   "engines": {
     "node": ">=16"
@@ -38,8 +40,10 @@
     "concurrently": "^7.2.2",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
     "jest": "^28.1.2",
     "jest-mock-extended": "^2.0.6",
+    "lint-staged": "^13.0.3",
     "nodemon": "^2.0.19",
     "prettier": "2.7.1",
     "prisma": "^4.0.0",
@@ -63,5 +67,9 @@
     "multer": "^1.4.5-lts.1",
     "passport": "^0.6.0",
     "passport-github2": "^0.1.12"
+  },
+  "lint-staged": {
+    "*.ts": "eslint --cache --fix",
+    "*.{js,ts,md,html,css}": "prettier --write"
   }
 }
